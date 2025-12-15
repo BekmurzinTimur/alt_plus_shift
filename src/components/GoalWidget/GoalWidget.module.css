@@ -1,0 +1,38 @@
+.widget {
+  background-color: var(--color-goal-bg);
+  border-radius: var(--border-radius-lg);
+  padding: 32px;
+  text-align: center;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--color-text);
+}
+
+.description {
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  margin-bottom: 20px;
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.button {
+  margin-bottom: 20px;
+}
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.progressText {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
