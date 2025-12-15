@@ -14,8 +14,7 @@ export const GoalWidget = ({ current, total }: GoalWidgetProps) => {
     <div className={styles.widget}>
       <h2 className={styles.title}>Hit your goal</h2>
       <p className={styles.description}>
-        Generate and send out couple more job applications today to get hired
-        faster
+        Generate and send out couple more job applications to get hired faster
       </p>
       <div className={styles.button}>
         <Link to="/generate">
@@ -40,9 +39,9 @@ export const GoalWidget = ({ current, total }: GoalWidgetProps) => {
       </div>
       <div className={styles.progress}>
         <Progress current={current} total={total} variant="bars" />
-        <span className={styles.progressText}>
+        <div className={styles.progressText}>
           {current} out of {total}
-        </span>
+        </div>
       </div>
     </div>
   );

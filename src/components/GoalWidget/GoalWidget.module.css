@@ -6,23 +6,24 @@
 }
 
 .title {
-  font-size: 24px;
+  font-size: 36px;
+  font-family: "FixelDisplay", "FixelText", "sans-serif";
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
   color: var(--color-text);
 }
 
 .description {
-  font-size: 15px;
+  max-width: 480px;
+  margin-bottom: 16px;
+  font-size: 18px;
   color: var(--color-text-secondary);
-  margin-bottom: 20px;
-  max-width: 320px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .button {
-  margin-bottom: 20px;
+  margin-bottom: 32px;
 }
 
 .progress {
@@ -33,6 +34,6 @@
 }
 
 .progressText {
-  font-size: 14px;
+  font-size: 18px;
   color: var(--color-text-secondary);
 }
