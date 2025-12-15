@@ -1,16 +1,16 @@
-import styles from "./ProgressDots.module.css";
+import styles from "./Progress.module.css";
 
-interface ProgressDotsProps {
+interface ProgressProps {
   current: number;
   total: number;
   variant?: "dots" | "bars";
 }
 
-export const ProgressDots = ({
+export const Progress = ({
   current,
   total,
   variant = "dots",
-}: ProgressDotsProps) => {
+}: ProgressProps) => {
   if (current >= total)
     return (
       <svg
@@ -31,7 +31,7 @@ export const ProgressDots = ({
     );
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${styles[variant]}`}>
       {Array.from({ length: total }, (_, index) => (
         <div
           key={index}

@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
-import { Button } from '../Button';
-import { ProgressDots } from '../ProgressDots';
-import styles from './GoalWidget.module.css';
+import { Link } from "react-router-dom";
+import { Button } from "../Button";
+import { Progress } from "../Progress";
+import styles from "./GoalWidget.module.css";
 
 interface GoalWidgetProps {
   current: number;
@@ -39,7 +39,7 @@ export const GoalWidget = ({ current, total }: GoalWidgetProps) => {
         </Link>
       </div>
       <div className={styles.progress}>
-        <ProgressDots current={current} total={total} variant="bars" />
+        <Progress current={current} total={total} variant="bars" />
         <span className={styles.progressText}>
           {current} out of {total}
         </span>
