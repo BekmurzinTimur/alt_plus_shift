@@ -1,27 +1,26 @@
 .container {
   background-color: var(--color-surface);
-  border: 2px dashed var(--color-border);
   border-radius: var(--border-radius-lg);
-  min-height: 400px;
+  height: 100%;
   display: flex;
   flex-direction: column;
-}
-
-.containerWithContent {
-  border-style: solid;
-}
-
-.placeholder {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding: 24px;
+  color: var(--color-text-secondary);
+  font-size: 18px;
 }
 
-.placeholderText {
-  color: var(--color-text-secondary);
-  font-size: 15px;
+.hasContent {
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+
+.hasContent:hover {
+  background-color: var(--color-surface-hover);
+}
+
+.result {
+  flex: 1;
+  margin-bottom: 16px;
 }
 
 .loading {
@@ -51,21 +50,9 @@
 
 .loadingText {
   color: var(--color-text-secondary);
-  font-size: 15px;
-}
-
-.content {
-  flex: 1;
-  padding: 24px;
-  white-space: pre-wrap;
-  line-height: 1.7;
-  font-size: 15px;
-  color: var(--color-text);
 }
 
 .footer {
-  padding: 16px 24px;
-  border-top: 1px solid var(--color-border);
   display: flex;
   justify-content: flex-end;
 }
@@ -74,7 +61,8 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 600;
   color: var(--color-text-secondary);
   transition: color var(--transition);
 }
@@ -86,8 +74,4 @@
 .copyIcon {
   width: 18px;
   height: 18px;
-}
-
-.copied {
-  color: var(--color-primary);
 }

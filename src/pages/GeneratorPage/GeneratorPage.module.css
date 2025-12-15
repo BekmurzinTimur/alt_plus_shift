@@ -23,6 +23,5 @@
 }
 
 .rightColumn {
-  position: sticky;
-  top: 24px;
+  height: 100%;
 }

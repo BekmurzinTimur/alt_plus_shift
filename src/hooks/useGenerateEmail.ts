@@ -27,7 +27,7 @@ Write a concise, professional cover letter that:
 Only output the cover letter text, nothing else.`;
 
   const response = await openai.responses.create({
-    model: "gpt-5-nano",
+    model: "gpt-4.1-nano",
     input: prompt,
   });
 

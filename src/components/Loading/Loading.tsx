@@ -1,0 +1,117 @@
+import React from "react";
+import styles from "./Loading.module.css";
+
+export const Loading: React.FC = () => {
+  return (
+    <div className={styles.bouncingOrbContainer}>
+      <svg
+        width="320"
+        height="320"
+        viewBox="0 0 320 320"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className={styles.bouncingOrb}
+      >
+        <g className={styles.animatedGroup}>
+          <g filter="url(#filter0_f_4_10791)">
+            <circle cx="160" cy="160" r="80" fill="white" />
+          </g>
+          <g filter="url(#filter1_i_4_10791)">
+            <circle
+              cx="160"
+              cy="160"
+              r="40"
+              fill="url(#paint0_radial_4_10791)"
+            />
+            <circle
+              cx="160"
+              cy="160"
+              r="40"
+              fill="url(#paint1_radial_4_10791)"
+            />
+          </g>
+        </g>
+        <defs>
+          <filter
+            id="filter0_f_4_10791"
+            x="0"
+            y="0"
+            width="320"
+            height="320"
+            filterUnits="userSpaceOnUse"
+            colorInterpolationFilters="sRGB"
+          >
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
+            <feBlend
+              mode="normal"
+              in="SourceGraphic"
+              in2="BackgroundImageFix"
+              result="shape"
+            />
+            <feGaussianBlur
+              stdDeviation="40"
+              result="effect1_foregroundBlur_4_10791"
+            />
+          </filter>
+          <filter
+            id="filter1_i_4_10791"
+            x="120"
+            y="118"
+            width="80"
+            height="82"
+            filterUnits="userSpaceOnUse"
+            colorInterpolationFilters="sRGB"
+          >
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
+            <feBlend
+              mode="normal"
+              in="SourceGraphic"
+              in2="BackgroundImageFix"
+              result="shape"
+            />
+            <feColorMatrix
+              in="SourceAlpha"
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+              result="hardAlpha"
+            />
+            <feOffset dy="-2" />
+            <feGaussianBlur stdDeviation="16" />
+            <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+            <feColorMatrix
+              type="matrix"
+              values="0 0 0 0 0.0627451 0 0 0 0 0.0941176 0 0 0 0 0.156863 0 0 0 0.08 0"
+            />
+            <feBlend
+              mode="normal"
+              in2="shape"
+              result="effect1_innerShadow_4_10791"
+            />
+          </filter>
+          <radialGradient
+            id="paint0_radial_4_10791"
+            cx="0"
+            cy="0"
+            r="1"
+            gradientUnits="userSpaceOnUse"
+            gradientTransform="translate(120 120) rotate(45) scale(113.137)"
+          >
+            <stop stopColor="white" />
+            <stop offset="1" stopColor="#D0D5DD" />
+          </radialGradient>
+          <radialGradient
+            id="paint1_radial_4_10791"
+            cx="0"
+            cy="0"
+            r="1"
+            gradientUnits="userSpaceOnUse"
+            gradientTransform="translate(179.375 137.5) rotate(111.93) scale(51.8788)"
+          >
+            <stop stopColor="white" />
+            <stop offset="1" stopColor="white" stopOpacity="0.16" />
+          </radialGradient>
+        </defs>
+      </svg>
+    </div>
+  );
+};

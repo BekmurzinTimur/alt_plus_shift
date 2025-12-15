@@ -42,8 +42,7 @@ export const ApplicationForm = ({
   const title =
     formData.jobTitle && formData.company ? (
       <>
-        {formData.jobTitle},<wbr />
-        {formData.company}
+        {formData.jobTitle},<wbr /> {formData.company}
       </>
     ) : (
       formData.jobTitle || formData.company || "New Application"
