@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom';
-import { Header } from '../../components/Header';
-import { ApplicationCard } from '../../components/ApplicationCard';
-import { GoalWidget } from '../../components/GoalWidget';
-import { Button } from '../../components/Button';
-import { useApplications } from '../../hooks/useApplications';
-import styles from './HomePage.module.css';
+import { Link } from "react-router-dom";
+import { Header } from "../../components/Header";
+import { ApplicationCard } from "../../components/ApplicationCard";
+import { GoalWidget } from "../../components/GoalWidget";
+import { Button } from "../../components/Button";
+import { useApplications } from "../../hooks/useApplications";
+import styles from "./HomePage.module.css";
 
 export const HomePage = () => {
   const { applications, removeApplication, count, goal } = useApplications();
@@ -37,25 +37,15 @@ export const HomePage = () => {
       </div>
 
       <div className={styles.grid}>
-        {applications.length === 0 ? (
-          <div className={styles.emptyState}>
-            <h2 className={styles.emptyStateTitle}>No applications yet</h2>
-            <p className={styles.emptyStateText}>
-              Create your first cover letter to get started
-            </p>
-            <Link to="/generate">
-              <Button>Create your first application</Button>
-            </Link>
-          </div>
-        ) : (
-          applications.map((app) => (
-            <ApplicationCard
-              key={app.id}
-              application={app}
-              onDelete={removeApplication}
-            />
-          ))
-        )}
+        {applications.length === 0
+          ? null
+          : applications.map((app) => (
+              <ApplicationCard
+                key={app.id}
+                application={app}
+                onDelete={removeApplication}
+              />
+            ))}
       </div>
 
       <GoalWidget current={count} total={goal} />
