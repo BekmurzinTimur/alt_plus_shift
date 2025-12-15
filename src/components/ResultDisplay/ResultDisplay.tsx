@@ -22,10 +22,7 @@ export const ResultDisplay = ({ result, isLoading }: ResultDisplayProps) => {
   };
 
   return (
-    <div
-      className={cn(styles.container, { [styles.hasContent]: !!result })}
-      onClick={handleCopy}
-    >
+    <div className={styles.container}>
       {isLoading ? (
         <div className={styles.loading}>
           <Loading />
@@ -34,7 +31,13 @@ export const ResultDisplay = ({ result, isLoading }: ResultDisplayProps) => {
         <>
           <div className={styles.result}>{result}</div>
           <div className={styles.footer}>
-            <button className={styles.copyButton} type="button">
+            <button
+              className={cn(styles.copyButton, {
+                [styles.hasContent]: !!result,
+              })}
+              type="button"
+              onClick={handleCopy}
+            >
               {copied ? "Copied!" : "Copy to clipboard"}
               <svg
                 width="20"
