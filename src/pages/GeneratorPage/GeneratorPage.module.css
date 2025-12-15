@@ -1,14 +1,9 @@
-.page {
-  min-height: 100vh;
-  background-color: var(--color-surface);
-  padding: 24px 40px;
-}
-
 .content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  gap: 32px;
   align-items: start;
+  margin-bottom: 48px;
 }
 
 @media (max-width: 768px) {

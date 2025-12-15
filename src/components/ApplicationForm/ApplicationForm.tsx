@@ -1,7 +1,8 @@
-import { useState, FormEvent, ChangeEvent } from 'react';
-import { ApplicationFormData } from '../../types';
-import { Button } from '../Button';
-import styles from './ApplicationForm.module.css';
+import { useState, FormEvent, ChangeEvent } from "react";
+import { ApplicationFormData } from "../../types";
+import { Button } from "../Button";
+import styles from "./ApplicationForm.module.css";
+import cn from "classnames";
 
 interface ApplicationFormProps {
   onSubmit: (data: ApplicationFormData) => void;
@@ -17,17 +18,17 @@ export const ApplicationForm = ({
   hasResult,
 }: ApplicationFormProps) => {
   const [formData, setFormData] = useState<ApplicationFormData>({
-    jobTitle: '',
-    company: '',
-    skills: '',
-    additionalDetails: '',
+    jobTitle: "",
+    company: "",
+    skills: "",
+    additionalDetails: "",
   });
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    if (name === 'additionalDetails') {
+    if (name === "additionalDetails") {
       // Allow writing more than MAX_CHARS
     }
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -39,15 +40,26 @@ export const ApplicationForm = ({
   };
 
   const title =
-    formData.jobTitle && formData.company
-      ? `${formData.jobTitle}, ${formData.company}`
-      : formData.jobTitle || formData.company || 'New Application';
+    formData.jobTitle && formData.company ? (
+      <>
+        {formData.jobTitle},<wbr />
+        {formData.company}
+      </>
+    ) : (
+      formData.jobTitle || formData.company || "New Application"
+    );
 
   const charCount = formData.additionalDetails.length;
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <h1 className={styles.title}>{title}</h1>
+      <h1
+        className={cn(styles.title, {
+          [styles.secondary]: !formData.jobTitle && !formData.company,
+        })}
+      >
+        {title}
+      </h1>
 
       <div className={styles.fieldRow}>
         <div className={styles.field}>
@@ -105,21 +117,33 @@ export const ApplicationForm = ({
         <textarea
           id="additionalDetails"
           name="additionalDetails"
-          className={`${styles.input} ${styles.textarea} ${
-            charCount > MAX_CHARS ? styles.limitError : ''
-          }`}
+          className={cn(styles.input, styles.textarea, {
+            [styles.limitError]: charCount > MAX_CHARS,
+          })}
           value={formData.additionalDetails}
           onChange={handleChange}
           placeholder="Tell us more about why you're a great fit..."
         />
-        <span className={`${styles.charCount} ${charCount > MAX_CHARS ? styles.charCountError : ''}`}>
+        <div
+          className={cn(styles.charCount, {
+            [styles.charCountError]: charCount > MAX_CHARS,
+          })}
+        >
           {charCount}/{MAX_CHARS}
-        </span>
+        </div>
       </div>
 
       <div className={styles.submitButton}>
-        <Button type="submit" fullWidth disabled={isLoading || charCount > MAX_CHARS}>
-          {isLoading ? 'Generating...' : hasResult ? 'Try again' : 'Generate Now'}
+        <Button
+          type="submit"
+          fullWidth
+          disabled={isLoading || charCount > MAX_CHARS}
+        >
+          {isLoading
+            ? "Generating..."
+            : hasResult
+            ? "Try again"
+            : "Generate Now"}
         </Button>
       </div>
     </form>

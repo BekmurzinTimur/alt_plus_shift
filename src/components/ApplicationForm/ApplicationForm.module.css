@@ -5,10 +5,16 @@
 }
 
 .title {
-  font-size: 28px;
+  font-family: "FixelDisplay", "FixelText", sans-serif;
+  font-size: 36px;
   font-weight: 600;
-  margin-bottom: 4px;
+  padding-bottom: 12px;
   color: var(--color-text);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.secondary {
+  color: var(--color-text-secondary);
 }
 
 .fieldRow {
@@ -30,23 +36,24 @@
 }
 
 .label {
-  font-size: 13px;
-  color: var(--color-text-secondary);
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .input {
-  padding: 12px 14px;
+  padding: 8px 12px;
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius);
-  font-size: 15px;
+  font-size: 16px;
   color: var(--color-text);
   background-color: var(--color-surface);
   transition: border-color var(--transition);
+  box-shadow: var(--shadow-regular);
 }
 
 .input:focus {
   outline: none;
-  border-color: var(--color-primary);
+  border-color: var(--color-border-accent);
 }
 
 .input::placeholder {
@@ -54,14 +61,23 @@
 }
 
 .textarea {
-  min-height: 160px;
+  min-height: 236px;
   resize: vertical;
   line-height: 1.5;
+  resize: none;
+}
+
+.textarea:focus {
+  box-shadow: var(--shadow-success);
+}
+
+.limitError:focus {
+  box-shadow: var(--shadow-error);
 }
 
 .charCount {
-  font-size: 12px;
-  color: var(--color-text-secondary);
+  font-size: 14px;
+  color: var(--color-gray);
   text-align: left;
 }
 

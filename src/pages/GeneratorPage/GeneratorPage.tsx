@@ -1,12 +1,12 @@
-import { useState } from 'react';
-import { Header } from '../../components/Header';
-import { ApplicationForm } from '../../components/ApplicationForm';
-import { ResultDisplay } from '../../components/ResultDisplay';
-import { GoalWidget } from '../../components/GoalWidget';
-import { useApplications } from '../../hooks/useApplications';
-import { useGenerateEmail } from '../../hooks/useGenerateEmail';
-import { ApplicationFormData } from '../../types';
-import styles from './GeneratorPage.module.css';
+import { useState } from "react";
+import { Header } from "../../components/Header";
+import { ApplicationForm } from "../../components/ApplicationForm";
+import { ResultDisplay } from "../../components/ResultDisplay";
+import { GoalWidget } from "../../components/GoalWidget";
+import { useApplications } from "../../hooks/useApplications";
+import { useGenerateEmail } from "../../hooks/useGenerateEmail";
+import { ApplicationFormData } from "../../types";
+import styles from "./GeneratorPage.module.css";
 
 export const GeneratorPage = () => {
   const { addApplication, count, goal, refresh } = useApplications();
@@ -30,9 +30,9 @@ export const GeneratorPage = () => {
 
       refresh();
     } catch (error) {
-      console.error('Failed to generate email:', error);
+      console.error("Failed to generate email:", error);
       alert(
-        error instanceof Error ? error.message : 'Failed to generate email'
+        error instanceof Error ? error.message : "Failed to generate email"
       );
     }
   };
@@ -50,8 +50,6 @@ export const GeneratorPage = () => {
             isLoading={generateMutation.isPending}
             hasResult={hasResult}
           />
-
-          {hasResult && <GoalWidget current={count} total={goal} />}
         </div>
 
         <div className={styles.rightColumn}>
@@ -61,6 +59,8 @@ export const GeneratorPage = () => {
           />
         </div>
       </div>
+
+      {hasResult && <GoalWidget current={count} total={goal} />}
     </div>
   );
 };
