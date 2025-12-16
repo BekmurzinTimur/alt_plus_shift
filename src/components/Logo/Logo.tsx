@@ -1,3 +1,5 @@
+import styles from "./Logo.module.css";
+
 export const Logo = () => {
   return (
     <svg
@@ -5,6 +7,7 @@ export const Logo = () => {
       height="48"
       viewBox="0 0 179 48"
       fill="none"
+      className={styles.logo}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path

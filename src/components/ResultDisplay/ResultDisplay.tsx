@@ -1,6 +1,5 @@
 import { useState } from "react";
 import styles from "./ResultDisplay.module.css";
-import cn from "classnames";
 import { Loading } from "../Loading";
 import { Button } from "../Button/Button";
 import { Copy } from "../Icons";

@@ -13,7 +13,6 @@
 }
 
 .button:disabled {
-  opacity: 0.7;
   cursor: not-allowed;
 }
 
@@ -41,12 +40,12 @@
 
 .ghost {
   background-color: transparent;
-  color: var(--color-text);
+  color: var(--color-gray);
   border-color: transparent;
 }
 
 .ghost:hover:not(:disabled) {
-  color: #000;
+  color: var(--color-text);
 }
 
 .sm {
@@ -67,11 +66,6 @@
 
 .fullWidth {
   width: 100%;
-}
-
-.loading {
-  color: transparent !important;
-  pointer-events: none;
 }
 
 .icon {

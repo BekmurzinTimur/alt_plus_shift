@@ -30,7 +30,6 @@ export const Button = ({
     styles[variant],
     styles[size],
     fullWidth && styles.fullWidth,
-    isLoading && styles.loading,
     className,
   ]);
 

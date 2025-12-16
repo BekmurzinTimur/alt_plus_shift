@@ -1,7 +1,6 @@
-import { Application } from '../types';
+import { Application } from "../types";
 
-const APPLICATIONS_KEY = 'alt-shift-applications';
-const OPENAI_KEY = 'alt-shift-openai-key';
+const APPLICATIONS_KEY = "alt-shift-applications";
 
 export const getApplications = (): Application[] => {
   try {

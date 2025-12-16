@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import cn from "classnames";
 import { Header } from "../../components/Header";
 import { ApplicationForm } from "../../components/ApplicationForm";
@@ -11,19 +11,35 @@ import { ApplicationFormData } from "../../types";
 import styles from "./GeneratorPage.module.css";
 
 export const GeneratorPage = () => {
-  const { addApplication, count, goal, refresh } = useApplications();
+  const { addApplication, removeApplication, count, goal, refresh } =
+    useApplications();
   const generateMutation = useGenerateEmail();
   const [result, setResult] = useState<string | null>(null);
+  const [lastApplicationId, setLastApplicationId] = useState<string | null>(
+    null
+  );
+  const resultRef = useRef<HTMLDivElement>(null);
 
   const handleSubmit = async (data: ApplicationFormData) => {
     try {
+      // Таймаут нужен чтобы подождать пока размеры элемента обновятся
+      setTimeout(
+        () => resultRef.current?.scrollIntoView({ behavior: "smooth" }),
+        100
+      );
       const generatedEmail = await generateMutation.mutateAsync(data);
       setResult(generatedEmail);
 
-      addApplication({
+      if (lastApplicationId) {
+        removeApplication(lastApplicationId);
+      }
+
+      const newApp = addApplication({
         ...data,
         generatedEmail,
       });
+
+      setLastApplicationId(newApp.id);
 
       refresh();
     } catch (error) {
@@ -54,7 +70,7 @@ export const GeneratorPage = () => {
           />
         </div>
 
-        <div className={styles.rightColumn}>
+        <div className={styles.rightColumn} ref={resultRef}>
           <ResultDisplay
             result={result}
             isLoading={generateMutation.isPending}

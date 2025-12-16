@@ -18,7 +18,8 @@ export const Header = ({ current, total }: HeaderProps) => {
       <div className={styles.rightSection}>
         <div className={styles.counter}>
           <span>
-            {current}/{total} applications generated
+            {current}/{total}{" "}
+            <span className={styles.counterText}>applications generated</span>
           </span>
           <Progress current={current} total={total} variant="dots" />
         </div>

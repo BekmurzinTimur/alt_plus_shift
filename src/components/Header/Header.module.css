@@ -32,14 +32,27 @@
   gap: 12px;
   font-size: 18px;
   color: var(--color-text-secondary);
+  text-align: end;
 }
 
+@media (max-width: 768px) {
+  .counter {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .counterText {
+    display: none;
+  }
+}
 .homeButton {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
   border-radius: var(--border-radius);
   border: 1px solid var(--color-border);
   color: var(--color-text-secondary);
