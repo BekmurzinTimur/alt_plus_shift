@@ -4,31 +4,26 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  height: 240px;
+  color: var(--color-text-secondary);
+  font-size: 18px;
 }
 
 .preview {
   position: relative;
-  flex: 1;
-}
-
-.greeting {
-  font-weight: 500;
-  margin-bottom: 8px;
-  color: var(--color-text);
 }
 
 .content {
-  font-size: 18px;
-  color: var(--color-text-secondary);
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
 .shadow {
   position: absolute;
-  bottom: 0;
+  bottom: -8px;
   left: 0;
   right: 0;
   background: linear-gradient(

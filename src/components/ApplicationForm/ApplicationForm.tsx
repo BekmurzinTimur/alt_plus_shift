@@ -3,6 +3,7 @@ import { ApplicationFormData } from "../../types";
 import { Button } from "../Button";
 import styles from "./ApplicationForm.module.css";
 import cn from "classnames";
+import { Plus, Repeat } from "../Icons";
 
 interface ApplicationFormProps {
   onSubmit: (data: ApplicationFormData) => void;
@@ -28,9 +29,6 @@ export const ApplicationForm = ({
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    if (name === "additionalDetails") {
-      // Allow writing more than MAX_CHARS
-    }
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -132,19 +130,31 @@ export const ApplicationForm = ({
         </div>
       </div>
 
-      <div className={styles.submitButton}>
+      {hasResult ? (
         <Button
           type="submit"
+          variant="outlined"
+          size="lg"
           fullWidth
           disabled={isLoading || charCount > MAX_CHARS}
+          isLoading={isLoading}
+          leadingIcon={<Repeat />}
         >
-          {isLoading
-            ? "Generating..."
-            : hasResult
-            ? "Try again"
-            : "Generate Now"}
+          Try again
         </Button>
-      </div>
+      ) : (
+        <Button
+          type="submit"
+          variant="primary"
+          size="lg"
+          fullWidth
+          disabled={isLoading || charCount > MAX_CHARS}
+          isLoading={isLoading}
+          leadingIcon={<Plus />}
+        >
+          Generate Now
+        </Button>
+      )}
     </form>
   );
 };

@@ -1,16 +1,17 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
 }
 
 .title {
   font-family: "FixelDisplay", "FixelText", sans-serif;
   font-size: 36px;
+  line-height: 44px;
   font-weight: 600;
-  padding-bottom: 12px;
+  padding-bottom: 11px;
   color: var(--color-text);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-divider);
 }
 
 .secondary {
@@ -37,6 +38,7 @@
 
 .label {
   font-size: 14px;
+  line-height: 20px;
   font-weight: 500;
 }
 
@@ -77,12 +79,9 @@
 
 .charCount {
   font-size: 14px;
+  line-height: 20px;
   color: var(--color-gray);
   text-align: left;
-}
-
-.submitButton {
-  margin-top: 8px;
 }
 
 .limitError {

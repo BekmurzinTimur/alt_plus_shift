@@ -1,31 +1,50 @@
-import { ButtonHTMLAttributes, ReactNode } from 'react';
-import styles from './Button.module.css';
+import { ButtonHTMLAttributes, ReactNode } from "react";
+import styles from "./Button.module.css";
+import { Spinner } from "../Icons/Spinner";
+import cn from "classnames";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary';
+  variant?: "primary" | "outlined" | "ghost";
+  size?: "sm" | "md" | "lg";
   fullWidth?: boolean;
+  isLoading?: boolean;
+  leadingIcon?: ReactNode;
+  trailingIcon?: ReactNode;
   children: ReactNode;
 }
 
 export const Button = ({
-  variant = 'primary',
+  variant = "primary",
   fullWidth = false,
+  isLoading = false,
+  leadingIcon,
+  trailingIcon,
   children,
-  className = '',
+  className = "",
+  disabled,
+  size = "md",
   ...props
 }: ButtonProps) => {
-  const classes = [
+  const classes = cn([
     styles.button,
     styles[variant],
-    fullWidth ? styles.fullWidth : '',
+    styles[size],
+    fullWidth && styles.fullWidth,
+    isLoading && styles.loading,
     className,
-  ]
-    .filter(Boolean)
-    .join(' ');
+  ]);
 
   return (
-    <button className={classes} {...props}>
-      {children}
+    <button className={classes} disabled={disabled || isLoading} {...props}>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <>
+          {leadingIcon && <span className={styles.icon}>{leadingIcon}</span>}
+          {children}
+          {trailingIcon && <span className={styles.icon}>{trailingIcon}</span>}
+        </>
+      )}
     </button>
   );
 };

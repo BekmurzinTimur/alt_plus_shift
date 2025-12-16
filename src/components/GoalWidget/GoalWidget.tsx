@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "../Button";
 import { Progress } from "../Progress";
 import styles from "./GoalWidget.module.css";
+import { Plus } from "../Icons";
 
 interface GoalWidgetProps {
   current: number;
@@ -18,21 +19,7 @@ export const GoalWidget = ({ current, total }: GoalWidgetProps) => {
       </p>
       <div className={styles.button}>
         <Link to="/generate">
-          <Button>
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M8 3V13M3 8H13"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
+          <Button leadingIcon={<Plus />} size="lg">
             Create New
           </Button>
         </Link>

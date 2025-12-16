@@ -1,4 +1,5 @@
 import { useState } from "react";
+import cn from "classnames";
 import { Header } from "../../components/Header";
 import { ApplicationForm } from "../../components/ApplicationForm";
 import { ResultDisplay } from "../../components/ResultDisplay";
@@ -6,19 +7,15 @@ import { GoalWidget } from "../../components/GoalWidget";
 import { useApplications } from "../../hooks/useApplications";
 import { useGenerateEmail } from "../../hooks/useGenerateEmail";
 import { ApplicationFormData } from "../../types";
+
 import styles from "./GeneratorPage.module.css";
 
 export const GeneratorPage = () => {
   const { addApplication, count, goal, refresh } = useApplications();
   const generateMutation = useGenerateEmail();
   const [result, setResult] = useState<string | null>(null);
-  const [lastFormData, setLastFormData] = useState<ApplicationFormData | null>(
-    null
-  );
 
   const handleSubmit = async (data: ApplicationFormData) => {
-    setLastFormData(data);
-
     try {
       const generatedEmail = await generateMutation.mutateAsync(data);
       setResult(generatedEmail);
@@ -38,12 +35,17 @@ export const GeneratorPage = () => {
   };
 
   const hasResult = result !== null;
+  const displayGoalWidget = hasResult && count < goal;
 
   return (
     <div className={styles.page}>
       <Header current={count} total={goal} />
 
-      <div className={styles.content}>
+      <div
+        className={cn(styles.content, {
+          [styles.contentWithGoalWidget]: displayGoalWidget,
+        })}
+      >
         <div className={styles.leftColumn}>
           <ApplicationForm
             onSubmit={handleSubmit}
@@ -60,7 +62,7 @@ export const GeneratorPage = () => {
         </div>
       </div>
 
-      {hasResult && <GoalWidget current={count} total={goal} />}
+      {displayGoalWidget && <GoalWidget current={count} total={goal} />}
     </div>
   );
 };
