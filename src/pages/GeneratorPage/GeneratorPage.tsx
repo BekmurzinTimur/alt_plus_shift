@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import cn from "classnames";
 import { Header } from "../../components/Header";
 import { ApplicationForm } from "../../components/ApplicationForm";
@@ -17,16 +17,13 @@ export const GeneratorPage = () => {
   const [lastApplicationId, setLastApplicationId] = useState<string | null>(
     null
   );
+  const rightColumnRef = useRef<HTMLDivElement>(null);
 
   const handleSubmit = async (data: ApplicationFormData) => {
     try {
       // Таймаут нужен чтобы подождать пока размеры элемента обновятся
       setTimeout(
-        () =>
-          window.scrollTo({
-            top: document.body.scrollHeight,
-            behavior: "smooth",
-          }),
+        () => rightColumnRef.current?.scrollIntoView({ behavior: "smooth" }),
         100
       );
       const generatedEmail = await generateMutation.mutateAsync(data);
@@ -70,7 +67,7 @@ export const GeneratorPage = () => {
           />
         </div>
 
-        <div className={styles.rightColumn}>
+        <div className={styles.rightColumn} ref={rightColumnRef}>
           <ResultDisplay
             result={result}
             isLoading={generateMutation.isPending}
