@@ -1,7 +1,11 @@
 .bouncingOrbContainer {
   display: inline-block;
 }
-
+@media screen and (max-width: 768px) {
+  .bouncingOrb {
+    width: 100%;
+  }
+}
 .animatedGroup {
   animation: bounce 2s ease-in-out infinite;
   transform-origin: center;
