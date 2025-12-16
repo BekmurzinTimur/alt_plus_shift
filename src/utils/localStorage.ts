@@ -11,9 +11,7 @@ export const getApplications = (): Application[] => {
   }
 };
 
-export const saveApplication = (application: Application): void => {
-  const applications = getApplications();
-  applications.unshift(application);
+export const saveApplications = (applications: Application[]): void => {
   localStorage.setItem(APPLICATIONS_KEY, JSON.stringify(applications));
 };
 

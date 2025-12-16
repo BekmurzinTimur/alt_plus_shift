@@ -2,21 +2,18 @@ import { useState, useCallback, useEffect } from "react";
 import { Application } from "../types";
 import {
   getApplications,
-  saveApplication,
-  deleteApplication,
+  saveApplications,
   generateId,
 } from "../utils/localStorage";
 
 export const useApplications = () => {
-  const [applications, setApplications] = useState<Application[]>([]);
-
-  const refresh = useCallback(() => {
-    setApplications(getApplications());
-  }, []);
+  const [applications, setApplications] = useState<Application[]>(() =>
+    getApplications()
+  );
 
   useEffect(() => {
-    refresh();
-  }, [refresh]);
+    saveApplications(applications);
+  }, [applications]);
 
   const addApplication = useCallback(
     (data: Omit<Application, "id" | "createdAt">): Application => {
@@ -25,20 +22,15 @@ export const useApplications = () => {
         id: generateId(),
         createdAt: Date.now(),
       };
-      saveApplication(application);
-      refresh();
+      setApplications((prev) => [application, ...prev]);
       return application;
     },
-    [refresh]
+    []
   );
 
-  const removeApplication = useCallback(
-    (id: string) => {
-      deleteApplication(id);
-      refresh();
-    },
-    [refresh]
-  );
+  const removeApplication = useCallback((id: string) => {
+    setApplications((prev) => prev.filter((app) => app.id !== id));
+  }, []);
 
   const count = applications.length;
   const goal = 5;
@@ -51,6 +43,5 @@ export const useApplications = () => {
     count,
     goal,
     remaining,
-    refresh,
   };
 };

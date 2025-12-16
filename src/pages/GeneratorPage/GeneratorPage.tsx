@@ -11,8 +11,7 @@ import { ApplicationFormData } from "../../types";
 import styles from "./GeneratorPage.module.css";
 
 export const GeneratorPage = () => {
-  const { addApplication, removeApplication, count, goal, refresh } =
-    useApplications();
+  const { addApplication, removeApplication, count, goal } = useApplications();
   const generateMutation = useGenerateEmail();
   const [result, setResult] = useState<string | null>(null);
   const [lastApplicationId, setLastApplicationId] = useState<string | null>(
@@ -43,8 +42,6 @@ export const GeneratorPage = () => {
       });
 
       setLastApplicationId(newApp.id);
-
-      refresh();
     } catch (error) {
       console.error("Failed to generate email:", error);
       alert(

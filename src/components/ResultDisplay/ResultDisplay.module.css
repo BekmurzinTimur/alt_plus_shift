@@ -3,6 +3,7 @@
   border-radius: var(--border-radius-lg);
   height: 100%;
   display: flex;
+  min-height: 200px;
   flex-direction: column;
   padding: 24px;
   color: var(--color-text-secondary);
